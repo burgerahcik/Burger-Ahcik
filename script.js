@@ -431,8 +431,9 @@ async function loadMenuFromSheet() {
             menuContainer.innerHTML += `
                 <div class="product">
 
-                    <div class="emoji">🍔</div>
-
+                    <div class="emoji">
+    <img src="${item.image}" alt="${item.name}" style="width:100%; height:180px; object-fit:cover; border-radius:10px;">
+</div>
                     <h3>${item.name}</h3>
 
                     <p>RM${Number(item.price).toFixed(2)}</p>
