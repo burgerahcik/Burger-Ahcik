@@ -408,4 +408,49 @@ window.addEventListener("click", function(event) {
 updateCart();
 
 toggleAddress();
+async function loadMenuFromSheet() {
 
+    const url = "https://script.google.com/macros/s/AKfycbygY9cceZtXoJ-hB7vP20YYi8out4rnVr3sN112W6bSDyNMfSCjt0otZUDYXZANG3Jj/exec";
+
+    try {
+
+        const response = await fetch(url);
+        const menu = await response.json();
+
+        const menuContainer =
+            document.getElementById("menu-container");
+
+        menuContainer.innerHTML = "";
+
+        menu.forEach(item => {
+
+            if (String(item.available).trim().toUpperCase() !== "ON") {
+                return;
+            }
+
+            menuContainer.innerHTML += `
+                <div class="product">
+
+                    <div class="emoji">🍔</div>
+
+                    <h3>${item.name}</h3>
+
+                    <p>RM${Number(item.price).toFixed(2)}</p>
+
+                    <button class="button"
+                        onclick="addToCart('${item.name}', ${item.price})">
+                        Add to Cart
+                    </button>
+
+                </div>
+            `;
+        });
+
+    } catch (error) {
+
+        console.error("Gagal ambil menu:", error);
+
+    }
+}
+
+loadMenuFromSheet();
