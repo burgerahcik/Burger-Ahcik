@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Ahcik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            🍔 Burger Ahcik
+        </div>
+        <button class="cart-button" onclick="openCart()">
+            🛒 Cart
+            <span id="cart-count">0</span>
+        </button>
+    </header>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Burger Ahcik 🍔</h1>
+            <p>Burger panas, sedap & puas hati!</p>
+            <a href="#menu" class="hero-button">
+                Lihat Menu
+            </a>
+        </div>
+    </section>
+    <!-- MENU -->
+    <section class="menu-section" id="menu">
+        <h2>🍔 Menu Kami</h2>
+        <p class="menu-subtitle">
+            Pilih burger kegemaran anda
+        </p>
+        <div class="menu-grid">
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Ayam Biasa</h3>
+                <p>RM4.00</p>
+                <button class="button" onclick="addToCart('Burger Ayam Biasa', 4)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Ayam Special</h3>
+                <p>RM5.00</p>
+                <button class="button" onclick="addToCart('Burger Ayam Special', 5)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Ayam Double</h3>
+                <p>RM5.50</p>
+                <button class="button" onclick="addToCart('Burger Ayam Double', 5.5)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Double Special</h3>
+                <p>RM6.00</p>
+                <button class="button" onclick="addToCart('Burger Double Special', 6)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Benjo</h3>
+                <p>RM3.00</p>
+                <button class="button" onclick="addToCart('Burger Benjo', 3)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Daging Biasa</h3>
+                <p>RM4.00</p>
+                <button class="button" onclick="addToCart('Burger Daging Biasa', 4)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Daging Special</h3>
+                <p>RM5.00</p>
+                <button class="button" onclick="addToCart('Burger Daging Special', 5)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Daging Double</h3>
+                <p>RM5.50</p>
+                <button class="button" onclick="addToCart('Burger Daging Double', 5.5)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🧀</div>
+                <h3>Cheese Keping</h3>
+                <p>RM1.00</p>
+                <button class="button" onclick="addToCart('Cheese Keping', 1)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍗</div>
+                <h3>Nugget Ayam</h3>
+                <p>RM6.00</p>
+                <button class="button" onclick="addToCart('Nugget Ayam', 6)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍟</div>
+                <h3>French Fries</h3>
+                <p>RM5.00</p>
+                <button class="button" onclick="addToCart('French Fries', 5)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Crispy Biasa</h3>
+                <p>RM8.00</p>
+                <button class="button" onclick="addToCart('Burger Crispy Biasa', 8)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Double Crispy</h3>
+                <p>RM16.00</p>
+                <button class="button" onclick="addToCart('Burger Double Crispy', 16)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Burger Triple Crispy</h3>
+                <p>RM24.00</p>
+                <button class="button" onclick="addToCart('Burger Triple Crispy', 24)">
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product">
+                <div class="emoji">🍔</div>
+                <h3>Ramen Burger Crunch</h3>
+                <p>RM13.50</p>
+                <button class="button" onclick="addToCart('Ramen Burger Crunch', 13.5)">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- CART -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeCart()">
+                ✕
+            </button>
+            <h2>🛒 Cart Anda</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                Jumlah: RM<span id="cart-total">0.00</span>
+            </div>
+            <button class="checkout-button" onclick="openCheckout()">
+                Checkout
+            </button>
+        </div>
+    </div>
+    <!-- CHECKOUT -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeCheckout()">
+                ✕
+            </button>
+            <h2>🧾 Maklumat Order</h2>
+            <form id="checkout-form">
+                <label>Nama</label>
+                <input
+                    type="text"
+                    id="customer-name"
+                    placeholder="Masukkan nama"
+                    required
+                >
+                <label>No. Telefon</label>
+                <input
+                    type="tel"
+                    id="customer-phone"
+                    placeholder="Contoh: 0123456789"
+                    required
+                >
+                <label>Cara Dapatkan Order</label>
+                <div class="delivery-options">
+                    <label class="option">
+                        <input
+                            type="radio"
+                            name="order-type"
+                            value="COD"
+                            onchange="toggleAddress()"
+                            checked
+                        >
+                        🛵 Delivery (COD)
+                    </label>
+                    <label class="option">
+                        <input
+                            type="radio"
+                            name="order-type"
+                            value="Pickup"
+                            onchange="toggleAddress()"
+                        >
+                        🏪 Pickup
+                    </label>
+                </div>
+                <div id="address-section">
+                    <label>Alamat Penghantaran</label>
+                    <textarea
+                        id="customer-address"
+                        placeholder="Masukkan alamat penuh"
+                    ></textarea>
+                </div>
+                <label>Nota Order</label>
+                <textarea
+                    id="order-note"
+                    placeholder="Contoh: Tak nak bawang"
+                ></textarea>
+                <button
+                    type="submit"
+                    class="order-button"
+                >
+                    📲 Hantar Order
+                </button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>© 2026 Burger Ahcik 🍔</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
