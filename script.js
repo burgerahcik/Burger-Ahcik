@@ -344,7 +344,7 @@ document.getElementById("checkout-form").addEventListener(
            Jangan letak + atau space.
         */
 
-        const whatsappNumber = "601158570613";
+        const whatsappNumber = window.businessSettings?.WhatsApp || "601158570613";
 
         /* =========================
            OPEN WHATSAPP
@@ -455,3 +455,24 @@ async function loadMenuFromSheet() {
 }
 
 loadMenuFromSheet();
+async function loadSettings() {
+
+    const url = "https://script.google.com/macros/s/AKfycbygY9cceZtXoJ-hB7vP20YYi8out4rnVr3sN112W6bSDyNMfSCjt0otZUDYXZANG3Jj/exec?type=settings";
+
+    try {
+
+        const response = await fetch(url);
+        const settings = await response.json();
+
+        window.businessSettings = settings;
+
+        console.log("Settings berjaya dimuatkan:", settings);
+
+    } catch (error) {
+
+        console.error("Gagal ambil Settings:", error);
+
+    }
+}
+
+loadSettings();
